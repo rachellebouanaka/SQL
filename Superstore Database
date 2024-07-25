@@ -30,20 +30,19 @@ VALUES
 #For this project, I used SQL to query the Superstore database to get information about items sold at the store and their prices. 
 
 #Use a SELECT statement to order the items by price.
-SELECT item_id, price
+SELECT item_name, price
 FROM superstore
-WHERE item_id
-ORDER BY price;
+ORDER BY price DESC;
 
 #Show a statistic about the item prices.
 SELECT AVG (price)
 FROM superstore;
 
 #Show a statistic about the price for items in the category of "Kitchen Supplies".
-SELECT SUM (stock_quantity) 'Kitchen Supplies'
+SELECT SUM (stock_quantity), "Kitchen Supplies"
 FROM superstore;
 
-SELECT item_id, stock_quantity
+#Show a statistic about the stock quantity of each item from the most to the least.
+SELECT item_name, stock_quantity
 FROM superstore
-WHERE item_id
 ORDER BY stock_quantity DESC;
