@@ -65,8 +65,9 @@ WHEN revenue>=2000+ THEN "Smaller Sized Businesses" END AS business_sizes
 FROM fortune_companies
 GROUP BY employees
 
-#Which industries have an average of 2000 or over employees?
+#Which comapnies have made a revenue of 300 or less?
 
-SELECT industry, AVG(employees) as avg_employees
+SELECT company_name,SUM(revenue)AS revenue_made
 FROM fortune_companies
-HAVING avg_employees>=2000;
+GROUP BY company_name
+HAVING revenue_made>=300;
