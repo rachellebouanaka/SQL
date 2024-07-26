@@ -78,3 +78,8 @@ SELECT company_name
 FROM fortune_companies
 WHERE maternity_leave_weeks>=8
 AND healthcare_benefits=1;
+
+#Write a query that shows the minimum revenue made.
+
+SELECT MIN(revenue) 
+FROM fortune_companies;
