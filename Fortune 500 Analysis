@@ -71,3 +71,10 @@ SELECT company_name,SUM(revenue)AS revenue_made
 FROM fortune_companies
 GROUP BY company_name
 HAVING revenue_made>=300;
+
+#Write a query that shows companies that have healthcare benefits and at least 8 weeks of maternity leave.
+
+SELECT company_name
+FROM fortune_companies
+WHERE maternity_leave_weeks>=8
+AND healthcare_benefits=1;
