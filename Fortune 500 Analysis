@@ -56,14 +56,16 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
-#Assign all companies as "Smaller Sized Businesses","Medium Sized Businesses, or Larger Sized Businesses" based on the number of employees.
+#Assign all the retail companies based on how may employees they have as a "Larger Company", "Average Company", or "Smaller Company".
 
-SELECT COUNT(*) 
-CASE WHEN employees>=2000000+ THEN "Larger Sized Businesses"
-WHEN revenue>=10,000+ THEN "Medium Sized Businesses"
-WHEN revenue>=2000+ THEN "Smaller Sized Businesses" END AS business_sizes
+SELECT company_name,
+CASE
+WHEN employees>=10000 THEN "Larger Company"
+WHEN employees>=5000 THEN "Average Company"
+WHEN employees>=1000 THEN "Smaller Company" 
+END as 'Company Size'
 FROM fortune_companies
-GROUP BY employees
+WHERE industry= 'Retail';
 
 #Which comapnies have made a revenue of 300 or less?
 
