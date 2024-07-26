@@ -56,7 +56,9 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
-#Assign all the retail companies based on how may employees they have as a "Larger Company", "Average Company", or "Smaller Company".
+#Anaysis: 
+
+# Assign all the retail companies based on how may employees they have as a "Larger Company", "Average Company", or "Smaller Company".
 
 SELECT company_name,
 CASE
@@ -67,21 +69,21 @@ END as 'Company Size'
 FROM fortune_companies
 WHERE industry= 'Retail';
 
-#Which comapnies have made a revenue of 300 or less?
+# Which comapnies have made a revenue of 300 or less?
 
 SELECT company_name,SUM(revenue)AS revenue_made
 FROM fortune_companies
 GROUP BY company_name
 HAVING revenue_made>=300;
 
-#Write a query that shows companies that have healthcare benefits and at least 8 weeks of maternity leave.
+# Write a query that shows companies that have healthcare benefits and at least 8 weeks of maternity leave.
 
 SELECT company_name
 FROM fortune_companies
 WHERE maternity_leave_weeks>=8
 AND healthcare_benefits=1;
 
-#Write a query that shows the minimum revenue made.
+# Write a query that shows the minimum revenue made.
 
 SELECT MIN(revenue) 
 FROM fortune_companies;
