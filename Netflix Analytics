@@ -64,5 +64,9 @@ VALUES
 #1. How many movie titles are there in the database? (movies only, not tv shows) 
 SELECT COUNT(*)
 FROM "netflix_titles_info" 
-WHERE type='Movies';
+WHERE type='Movie';
 
+
+#2. When was the most recent batch of tv shows and/or movies added to the database? 
+SELECT max(date("date_added"))
+FROM "netflix_titles_info";
