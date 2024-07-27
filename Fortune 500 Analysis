@@ -58,7 +58,7 @@ VALUES
 
 #Anaysis: 
 
-# Assign all the retail companies based on how may employees they have as a "Larger Company", "Average Company", or "Smaller Company".
+# Assign all the retail companies based on how many employees they have, as a "Larger Company", "Average Company", or "Smaller Company".
 
 SELECT company_name,
 CASE
