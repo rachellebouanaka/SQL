@@ -15,3 +15,24 @@ AND orderid <> 'Order ID';
 
 Select the customer account numbers for all the orders that were placed in February.
 
+Select the customer account numbers for all the orders that were placed in February.
+
+SELECT distinct acctnum
+FROM BIT_DB.customers cust
+INNER JOIN BIT_DB.FebSales Feb
+ON cust.order_id=FEB.orderid
+WHERE length(orderid) = 6
+AND orderid <> 'Order ID';
+
+Which product was the cheapest one sold in January, and what was the price?
+
+SELECT distinct Product, price
+FROM BIT_DB.JanSales
+WHERE price in (SELECT min(price) FROM BIT_DB.JanSales);
+
+What is the total revenue for each product sold in January?
+(Revenue can be calculated using the number of products sold and the price of the products).
+
+SELECT sum(quantity)*price as revenue
+FROM BIT_DB.JanSales
+GROUP BY product;
