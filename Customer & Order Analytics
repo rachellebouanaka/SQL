@@ -1,0 +1,17 @@
+How many orders were placed in January?
+
+SELECT COUNT(orderid)
+FROM BIT_DB.JanSales
+WHERE length(orderid) = 6
+AND orderid <> 'Order ID';
+
+How many of those orders were for an iPhone?
+
+SELECT COUNT(orderid)
+FROM BIT_DB.JanSales
+WHERE Product='Iphone'
+AND length(orderid) = 6
+AND orderid <> 'Order ID';
+
+Select the customer account numbers for all the orders that were placed in February.
+
