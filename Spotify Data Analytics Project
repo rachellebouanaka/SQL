@@ -43,6 +43,7 @@ SELECT track_name, artist_name, energy, popularity
 FROM BIT_DB.Spotifydata
 ORDER BY popularity ASC
 LIMIT 10;
+
 #Lastly, I listed all the artists and track names with popularity scores '90, 91, and 92'.
 SELECT artist_name, track_name, popularity
 FROM BIT_DB.Spotifydata 
