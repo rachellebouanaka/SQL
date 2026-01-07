@@ -1,0 +1,52 @@
+Climate Conference Project
+Database: https://www.db-fiddle.com/f/pxMci1sLL945KHKYvpe9W6/1
+
+LEFT JOIN: List all the VIPS (first and last names) and any panels they are presenting at.
+SELECT vips.last_name,
+vips.first_name, 
+events.event_id
+FROM vips
+LEFT JOIN events
+ON vips.event=events.event_id;
+
+INNER JOIN: Find the names of the VIPS who have RSVP'd for the dinner.
+SELECT vips.last_name,
+vips.first_name,
+reservations.dinner_rsvp
+FROM vips
+INNER JOIN reservations
+ON vips.member_id=reservations.member_id
+WHERE reservations.dinner_rsvp= 1;
+
+Multiple JOINS: Find the event names, attendees names, and their hotel names.
+SELECT vips.last_name,
+vips.first_name,
+events.event_name,
+hotels.hotel_name
+FROM vips
+INNER JOIN events
+ON vips.event=events.event_id
+LEFT JOIN reservations
+ON reservations.member_id=vips.member_id
+LEFT JOIN hotels
+ON reservations.hotel=hotels.hotel_id;
+
+SELF JOIN: Find VIPs who provide feedback to others and the corresponding VIPs who receive their feedback.
+v1.first_name AS feedback_giver, v1.last_name AS giver_last, 
+       v2.first_name AS feedback_receiver, v2.last_name AS receiver_last
+FROM vips v1
+JOIN vips v2 ON v1.provides_feedback_to = v2.member_id;
+
+Custom Query: Get a list of all government-affiliated VIPs who have RSVP’d for dinner.
+SELECT v.first_name, v.last_name, v.association
+FROM vips v
+INNER JOIN reservations r ON v.member_id = r.member_id
+WHERE v.assoc_type = 'government' AND r.dinner_rsvp = 1;
+
+Custom Query: Find the number of VIPs attending each event, ordered by event attendance.
+SELECT events.event_name, COUNT(vips.member_id) AS attendee_count
+FROM events
+LEFT JOIN vips 
+ON events.event_id= vips.event
+GROUP BY events.event_name
+ORDER BY attendee_count DESC;
