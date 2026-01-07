@@ -1,0 +1,7 @@
+SELECT * FROM BIT_DB.Spotifydata
+
+#1. What are the 10 most popular tracks, list the artist and the name of their track.
+
+SELECT track_name, artist_name, popularity
+FROM BIT_DB.SpotifyData
+LIMIt 10; 
